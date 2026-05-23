@@ -186,66 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const textElements = document.querySelectorAll('p:not(.marquee-caption-title):not(.marquee-caption-role):not(.marquee-caption-desc), h1, h2:not(.section-title), h3, h4, h5, h6, li, .accordion-body-title, .footer-email, .hero-subtitle');
         textElements.forEach((el) => {
             // Exclude elements that are already part of another specific reveal logic
-            if (!el.closest('.manifesto-line') && !el.closest('.grade-row')) {
+            if (!el.closest('.manifesto-line')) {
                 el.classList.add('fade-up-text');
                 observer.observe(el);
             }
         });
-
-        // Grade rows stagger
-        const gradeRows = document.querySelectorAll('.grade-row:not(.grade-header)');
-        const gradeObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                    }, i * 60);
-                    gradeObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        gradeRows.forEach((row) => {
-            row.style.opacity = '0';
-            row.style.transform = 'translateX(-20px)';
-            row.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            gradeObserver.observe(row);
-        });
-
-        // Grade summary
-        const summaryItems = document.querySelectorAll('.grade-summary-item');
-        const summaryObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const numEl = entry.target.querySelector('.grade-summary-number');
-                    const target = parseInt(numEl.textContent);
-                    animateNumber(numEl, 0, target, 800);
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    summaryObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        summaryItems.forEach((item) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            summaryObserver.observe(item);
-        });
-    }
-
-    function animateNumber(el, start, end, duration) {
-        const startTime = performance.now();
-        function update(time) {
-            const elapsed = time - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(start + (end - start) * eased);
-            if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
     }
 
     // ---- Active Navigation ---- //
