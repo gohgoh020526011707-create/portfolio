@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goh Jun Siong — Personal Portfolio</title>
+    <meta name="description"
+        content="Personal portfolio of Goh Jun Siong — a creative individual from Kulai, Johor, Malaysia with a passion for design, technology, and innovation.">
+    <meta property="og:title" content="Goh Jun Siong — Personal Portfolio">
+    <meta property="og:description" content="A personal portfolio crafted with precision and care.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#dcd8c0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="lang-zh">
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Noise Overlay -->
+    <div class="noise-container" aria-hidden="true">
+        <div class="noise"></div>
+    </div>
+
+    <!-- Canvas grain background -->
+    <canvas id="grain-canvas" aria-hidden="true"></canvas>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo-wrap">
+            <div class="preloader-logo">G</div>
+        </div>
+        <div class="preloader-copy">
+            <div class="preloader-copy-col">
+                <p>
+                    <span class="lang-en">Passionate about system implementation — blending programming skills with
+                        strong business acumen.</span>
+                    <span class="lang-zh">對系統實作充滿熱情——將程式技術與敏銳的商業思維完美結合。</span>
+                </p>
+            </div>
+            <div class="preloader-copy-col">
+                <p>
+                    <span class="lang-en">Explore my journey from Information Management to Software Engineering.</span>
+                    <span class="lang-zh">探索我從資訊管理邁向專業軟體工程的旅程。</span>
+                </p>
+            </div>
+        </div>
+        <div class="preloader-counter">
+            <p id="counter-number">00</p>
+            <aside>%</aside>
+        </div>
+    </div>
+
+    <!-- Scrollbar indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-indicator-thumb" id="scroll-thumb"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-desktop">
+            <div class="logo-wrap">
+                <a href="#hero" class="logo-link" aria-label="Goh Jun Siong">
+                    <div class="logo-icon">
+                        <span>G</span>
+                    </div>
+                    <div class="logo-text">
+                        <span><span class="lang-en">PORTFOLIO</span><span class="lang-zh">個人網站</span></span>
+                        <span><span class="lang-en">INTRO</span><span class="lang-zh">簡介</span></span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-capsule">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active"><span class="nav-num">001/</span><span
+                                class="nav-label"><span class="lang-en">Home</span><span
+                                    class="lang-zh">首頁</span></span></a></li>
+                    <li><a href="#about" class="nav-link"><span class="nav-num">002/</span><span class="nav-label"><span
+                                    class="lang-en">About</span><span class="lang-zh">關於</span></span></a></li>
+                    <li><a href="#experience" class="nav-link"><span class="nav-num">003/</span><span
+                                class="nav-label"><span class="lang-en">Experience</span><span
+                                    class="lang-zh">經歷</span></span></a></li>
+                    <li><a href="#contact" class="nav-link"><span class="nav-num">004/</span><span
+                                class="nav-label"><span class="lang-en">Contact</span><span
+                                    class="lang-zh">聯絡</span></span></a></li>
+                </ul>
+            </div>
+            <div class="nav-right-capsule">
+                <span class="nav-location">MY</span>
+                <span class="nav-divider"></span>
+                <span class="nav-year">2026</span>
+                <button class="lang-toggle-btn" aria-label="Toggle Language">EN</button>
+            </div>
+        </nav>
+
+        <!-- Mobile nav -->
+        <nav class="nav-mobile">
+            <a href="#hero" class="mobile-logo" aria-label="Goh Jun Siong">
+                <div class="logo-icon"><span>G</span></div>
+            </a>
+            <button class="lang-toggle-btn" aria-label="Toggle Language">EN</button>
+            <button class="burger-btn" id="burger-btn" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-menu-links">
+            <li><a href="#hero" class="mobile-menu-link"><span class="nav-num">001/</span><span
+                        class="lang-en">Home</span><span class="lang-zh">首頁</span></a></li>
+            <li><a href="#about" class="mobile-menu-link"><span class="nav-num">002/</span><span
+                        class="lang-en">About</span><span class="lang-zh">關於</span></a></li>
+            <li><a href="#experience" class="mobile-menu-link"><span class="nav-num">003/</span><span
+                        class="lang-en">Experience</span><span class="lang-zh">經歷</span></a></li>
+            <li><a href="#contact" class="mobile-menu-link"><span class="nav-num">004/</span><span
+                        class="lang-en">Contact</span><span class="lang-zh">聯絡</span></a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <p>Kulai, Johor — Malaysia</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <main>
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+                <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+                <!-- Floating concept words -->
+                <div class="floating-words" id="floating-words" aria-hidden="true">
+                    <div class="float-word"><span class="lang-en">Ambition</span><span class="lang-zh">志向</span></div>
+                    <div class="float-word"><span class="lang-en">Badminton</span><span class="lang-zh">羽毛球</span></div>
+                    <div class="float-word"><span class="lang-en">Creativity</span><span class="lang-zh">創意</span></div>
+                    <div class="float-word"><span class="lang-en">Logic</span><span class="lang-zh">邏輯</span></div>
+                    <div class="float-word"><span class="lang-en">Meticulous</span><span class="lang-zh">縝密</span></div>
+                    <div class="float-word"><span class="lang-en">Imagination</span><span class="lang-zh">想像</span>
+                    </div>
+                    <div class="float-word"><span class="lang-en">Innovation</span><span class="lang-zh">創新</span></div>
+                    <div class="float-word"><span class="lang-en">Digital Youth</span><span class="lang-zh">數位青年</span>
+                    </div>
+                    <div class="float-word"><span class="lang-en">Learning</span><span class="lang-zh">學習</span></div>
+                    <div class="float-word"><span class="lang-en">Growth</span><span class="lang-zh">成長</span></div>
+                    <div class="float-word"><span class="lang-en">Explore</span><span class="lang-zh">探索</span></div>
+                    <div class="float-word"><span class="lang-en">Patience</span><span class="lang-zh">耐心</span></div>
+                </div>
+
+                <!-- Center name -->
+                <div class="hero-center">
+                    <div class="hero-name-wrap" id="hero-name">
+                        <svg viewBox="0 0 1200 180" preserveAspectRatio="xMidYMid meet" class="hero-name-svg lang-en"
+                            aria-label="GOH JUN SIONG">
+                            <text x="600" y="100" text-anchor="middle" dominant-baseline="middle"
+                                font-family="'Inter', sans-serif" font-weight="800" font-size="140" fill="#535352">
+                                GOH JUN SIONG
+                            </text>
+                        </svg>
+                        <svg viewBox="0 0 1200 180" preserveAspectRatio="xMidYMid meet" class="hero-name-svg lang-zh"
+                            aria-label="吳俊雄">
+                            <text x="600" y="100" text-anchor="middle" dominant-baseline="middle"
+                                font-family="'Inter', sans-serif" font-weight="800" font-size="140" fill="#535352"
+                                letter-spacing="0.5em">
+                                吳俊雄
+                            </text>
+                        </svg>
+                    </div>
+                    <p class="hero-subtitle" id="hero-subtitle">
+                        <span class="lang-en">吳俊雄</span>
+                        <span class="lang-zh">GOH JUN SIONG</span>
+                    </p>
+
+                    <!-- Photo Stack -->
+                    <div class="photo-stack" id="photo-stack" aria-hidden="true">
+                        <div class="stack-photo"><img src="images/pphoto/photo1.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo3.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo9.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo11.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo4.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo5.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo8.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo7.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo12.jpg" alt="" draggable="false"></div>
+                        <div class="stack-photo"><img src="images/pphoto/photo6.jpg" alt="" draggable="false"></div>
+                    </div>
+                </div>
+
+                <div class="hero-scroll-hint" id="hero-scroll">
+                    <span><span class="lang-en">Scroll to Explore</span><span class="lang-zh">向下滑動探索</span></span>
+                </div>
+            </section>
+
+            <!-- Manifesto / About Section -->
+            <section class="section-gap">
+                <section class="manifesto" id="about">
+                    <div class="manifesto-content">
+                        <h2 class="manifesto-line" data-reveal><span class="lang-en">A Young Creative From Kulai,
+                                Johor</span><span class="lang-zh">來自馬來西亞的創打拼青年</span></h2>
+                        <h2 class="manifesto-line" data-reveal><span class="lang-en">Where Ambition Meets
+                                Discipline</span><span class="lang-zh">企圖心與紀律的交會點</span></h2>
+                        <h2 class="manifesto-line" data-reveal><span class="lang-en">Exploring the Intersection
+                                of</span><span class="lang-zh">在此探索</span></h2>
+                        <h2 class="manifesto-line" data-reveal><span class="lang-en">Business, Technology, and
+                                Design</span><span class="lang-zh">商業、科技與設計的無限可能</span></h2>
+                        <h2 class="manifesto-line" data-reveal><span class="lang-en">Building Foundations
+                                for</span><span class="lang-zh">為未來的發展與潛能</span></h2>
+                        <h2 class="manifesto-line" data-reveal><span class="lang-en">Tomorrow's
+                                Possibilities</span><span class="lang-zh">打下最堅實的基礎</span></h2>
+                    </div>
+                </section>
+            </section>
+
+            <!-- About Detail -->
+            <section class="section-gap layout-container" id="about-detail">
+                <div class="about-grid">
+                    <div class="about-col">
+                        <p class="section-label"><span class="lang-en">// 01 Profile</span><span class="lang-zh">// 01
+                                個人簡介</span></p>
+                        <h3 class="about-name">Goh Jun Siong</h3>
+                        <p class="about-chinese">吳俊雄</p>
+                        <p class="about-text">
+                            <span class="lang-en">A senior student from Malaysia majoring in Information Management at
+                                National Chi Nan University, Taiwan. Passionate about system implementation and
+                                leveraging technology to solve business challenges, with a goal to become a professional
+                                Software Engineer.</span>
+                            <span
+                                class="lang-zh">來自馬來西亞，目前就讀於台灣國立暨南國際大學資訊管理學系大四。對系統實作充滿熱情，致力於運用科技解決商業痛點，目標成為一名專業的軟體工程師。</span>
+                        </p>
+                    </div>
+                    <div class="about-col">
+                        <p class="section-label"><span class="lang-en">// 02 Background</span><span class="lang-zh">//
+                                02 背景資料</span></p>
+                        <div class="about-details">
+                            <div class="detail-row">
+                                <span class="detail-label"><span class="lang-en">Location</span><span
+                                        class="lang-zh">所在地</span></span>
+                                <span class="detail-value"><span class="lang-en">Taiwan / Malaysia</span><span
+                                        class="lang-zh">台灣 / 馬來西亞</span></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label"><span class="lang-en">University</span><span
+                                        class="lang-zh">就讀大學</span></span>
+                                <span class="detail-value"><span class="lang-en">National Chi Nan Univ.</span><span
+                                        class="lang-zh">國立暨南國際大學</span></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label"><span class="lang-en">Major</span><span
+                                        class="lang-zh">主修科系</span></span>
+                                <span class="detail-value"><span class="lang-en">Information Management</span><span
+                                        class="lang-zh">資訊管理學系</span></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label"><span class="lang-en">Status</span><span
+                                        class="lang-zh">就學狀態</span></span>
+                                <span class="detail-value"><span class="lang-en">Senior Year</span><span
+                                        class="lang-zh">大學四年級</span></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label"><span class="lang-en">Languages</span><span
+                                        class="lang-zh">語言能力</span></span>
+                                <span class="detail-value"><span class="lang-en">Chinese / English / Malay</span><span
+                                        class="lang-zh">中文 / 英文 / 馬來文</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section-gap layout-container" id="experience">
+                <h2 class="section-title" data-reveal>
+                    <span class="reveal-item"><span class="lang-en">Experience</span><span
+                            class="lang-zh">專案經歷</span></span>
+                </h2>
+
+                <div class="accordion-list">
+                    <!-- Project 1: Lifestyle Guide -->
+                    <div class="accordion-item" data-accordion>
+                        <div class="accordion-header">
+                            <div class="accordion-title-wrap">
+                                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                                <span class="accordion-title"><span class="lang-en">LIFESTYLE-GUIDE (School
+                                        Project)</span><span class="lang-zh">LIFESTYLE-GUIDE (學校專案)</span></span>
+                            </div>
+                            <div class="accordion-num-wrap">
+                                <span class="accordion-num">001//</span>
+                                <span class="accordion-explore"><span class="lang-en">Learn more</span><span
+                                        class="lang-zh">了解更多</span></span>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-body-num">
+                                <span class="accordion-big-num">001</span>
+                                <span class="accordion-projects-label">//experience</span>
+                            </div>
+                            <div class="accordion-body-content">
+                                <div class="accordion-body-title"><span class="lang-en">Database Optimization & API
+                                        Integration</span><span class="lang-zh">資料庫優化與 API 整合</span></div>
+                                <p class="accordion-body-text">
+                                    <span class="lang-en">Optimized database structure by implementing many-to-many
+                                        relationships to link complex diet and workout data. Spearheaded the API
+                                        documentation process and partnered with the frontend team to streamline system
+                                        integration and testing.</span>
+                                    <span class="lang-zh">優化資料庫結構，實作多對多關聯以連結複雜的飲食與運動數據。主導 API
+                                        文件的撰寫流程，並與前端團隊密切合作，優化系統整合與測試流程。</span>
+                                </p>
+                                <div class="accordion-tags">
+                                    <span><span class="lang-en">Database Design</span><span
+                                            class="lang-zh">資料庫設計</span><span class="tag-sep">/</span></span>
+                                    <span><span class="lang-en">API Documentation</span><span class="lang-zh">API
+                                            文件</span><span class="tag-sep">/</span></span>
+                                    <span><span class="lang-en">System Integration</span><span
+                                            class="lang-zh">系統整合</span><span class="tag-sep">/</span></span>
+                                    <span><span class="lang-en">Team Collaboration</span><span
+                                            class="lang-zh">團隊合作</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Scheduling System -->
+                    <div class="accordion-item" data-accordion>
+                        <div class="accordion-header">
+                            <div class="accordion-title-wrap">
+                                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span class="accordion-title"><span class="lang-en">Restaurant Scheduling
+                                        System</span><span class="lang-zh">餐廳排班系統</span></span>
+                            </div>
+                            <div class="accordion-num-wrap">
+                                <span class="accordion-num">002//</span>
+                                <span class="accordion-explore"><span class="lang-en">Learn more</span><span
+                                        class="lang-zh">了解更多</span></span>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-body-num">
+                                <span class="accordion-big-num">002</span>
+                                <span class="accordion-projects-label">//experience</span>
+                            </div>
+                            <div class="accordion-body-content">
+                                <div class="accordion-body-title"><span class="lang-en">Real-time Automated Shift
+                                        Management</span><span class="lang-zh">即時自動化排班管理</span></div>
+                                <p class="accordion-body-text">
+                                    <span class="lang-en">Developed a user-friendly employee scheduling system for a
+                                        restaurant company. This project leverages Firebase for real-time data
+                                        management and Vercel for seamless frontend deployment. It addresses the
+                                        critical issue of delayed schedule updates, providing instant access to shifts.
+                                        The system also incorporates automated scheduling logic to optimize the
+                                        personnel assignment process.</span>
+                                    <span class="lang-zh">為餐飲業開發了一套易於使用的員工排班系統。此專案使用 Firebase 進行即時數據管理，並透過 Vercel
+                                        部署前端。解決了排班更新延遲的問題，提供即時的班表查詢。系統更結合了自動化排班邏輯，優化人員配置流程。</span>
+                                </p>
+                                <div class="accordion-tags">
+                                    <span><span class="lang-en">HTML / Frontend</span><span class="lang-zh">HTML /
+                                            前端</span><span class="tag-sep">/</span></span>
+                                    <span>Firebase<span class="tag-sep">/</span></span>
+                                    <span>Vercel<span class="tag-sep">/</span></span>
+                                    <span><span class="lang-en">Automated Logic</span><span
+                                            class="lang-zh">自動化邏輯</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </section>
+
+    <!-- Awards Marquee Section -->
+    <section class="section-gap" id="awards">
+        <div class="layout-container">
+            <h2 class="section-title" data-reveal>
+                <span class="reveal-item"><span class="lang-en">Activities & Awards</span><span
+                        class="lang-zh">活動與獎項</span></span>
+            </h2>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <!-- First set -->
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/activity.jpg" alt="Activity Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/sportsactivity.jpg" alt="Sports Activity Photo"
+                                    draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">Overseas Chinese Students Sports Meet
+                                "Autumn Surprise"</span><span class="lang-zh">僑生聯誼會「秋鷺記」運動會</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Event Planning Department</span><span
+                                class="lang-zh">活動企劃組</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Assisted in event planning and
+                                organization for the International Student Sports Games, including program scheduling,
+                                promotion, and photography.</span><span
+                                class="lang-zh">協助國際學生運動會籌辦活動策劃工作，包括流程規劃、宣傳、攝影等。</span></p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/affairs.jpg" alt="Student Affairs Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/kopitian.jpg" alt="KOPITIAM Photo" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">12th KOPITIAM Malaysia Students
+                                Week</span><span class="lang-zh">第12屆「KOPITIAM」馬來西亞學生週</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">General Affairs Section</span><span
+                                class="lang-zh">總務</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Managed logistics for the Malaysian
+                                Student Week and Graduation Farewell Party, overseeing venue setup and food
+                                preparation</span><span class="lang-zh">參與馬來西亞學生週與畢業歡送會總務工作，負責策劃場地佈置與食物的製作。</span></p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/affairs112.jpg" alt="Student Affairs 112 Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/jumeng1.JPG" alt="Jumeng Photo 1" draggable="false">
+                                <img src="images/aphoto/jumeng2.JPG" alt="Jumeng Photo 2" draggable="false">
+                                <img src="images/aphoto/jumeng3.JPG" alt="Jumeng Photo 3" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">112 "Walking Together in Dreams" Freshman
+                                Welcome</span><span class="lang-zh">112學年度「聚夢同行」迎新系列活動</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Venue Affairs</span><span
+                                class="lang-zh">場務</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Managed venue logistics and general
+                                affairs for the orientation event series</span><span
+                                class="lang-zh">負責迎新系列會場務及總務工作。</span></p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/coordinator.jpg" alt="Coordinator Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/dong1.JPG" alt="Dong Photo 1" draggable="false">
+                                <img src="images/aphoto/dong2.jpg" alt="Dong Photo 2" draggable="false">
+                                <img src="images/aphoto/dong3.jpeg" alt="Dong Photo 3" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">"Winter Warmth · Heart Gathering"
+                                Event</span><span class="lang-zh">「冬暖·心聚」神秘活動</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Vice Event General Coordinator</span><span
+                                class="lang-zh">副總召集人</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Served as Vice General Coordinator,
+                                overseeing the preparation and execution of a mystery event, managing event scheduling
+                                and staffing, and supporting the General Coordinator.
+                                Party.</span><span class="lang-zh">擔任活動副總召集人，統籌神秘活動的籌備與執行工作，規劃流程與人員的安排，并為總召提供支援。</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/photography.jpg" alt="Photography Department Award"
+                                    draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/ph1.jpg" alt="Photography Photo 1" draggable="false">
+                                <img src="images/aphoto/ph2.JPG" alt="Photography Photo 2" draggable="false">
+                                <img src="images/aphoto/ph3.jpg" alt="Photography Photo 3" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">28th Overseas Chinese Students
+                                Association Graduation Farewell "Departure · Soaring"</span><span
+                                class="lang-zh">第二十八屆僑生聯誼會畢業歡送會「啟程·翱翔」</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Information & Photography
+                                Dept.</span><span class="lang-zh">資訊組</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Managed multimedia and photography for the
+                                Graduation Farewell Party, including on-site event photography, filming and editing
+                                faculty blessing videos, and executing lighting design and control</span>
+                            <span class="lang-zh">負責畢業歡送會資訊與攝影相關工作，例如現場拍攝照片、師長祝福影片拍攝與剪輯、燈光設計控制。</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- Duplicate set for seamless loop -->
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/activity.jpg" alt="Activity Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/sportsactivity.jpg" alt="Sports Activity Photo"
+                                    draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">Overseas Chinese Students Sports Meet
+                                "Autumn Surprise"</span><span class="lang-zh">僑生聯誼會「秋鷺記」運動會</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Event Planning Department</span><span
+                                class="lang-zh">活動企劃組</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Assisted in event planning and
+                                organization for the International Student Sports Games, including program scheduling,
+                                promotion, and photography.</span><span
+                                class="lang-zh">協助國際學生運動會籌辦活動策劃工作，包括流程規劃、宣傳、攝影等。</span></p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/affairs.jpg" alt="Student Affairs Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/kopitian.jpg" alt="KOPITIAM Photo" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">12th KOPITIAM Malaysia Students
+                                Week</span><span class="lang-zh">第12屆「KOPITIAM」馬來西亞學生週</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">General Affairs Section</span><span
+                                class="lang-zh">總務</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Managed logistics for the Malaysian
+                                Student Week and Graduation Farewell Party, overseeing venue setup and food
+                                preparation</span><span class="lang-zh">參與馬來西亞學生週與畢業歡送會總務工作，負責策劃場地佈置與食物的製作。</span></p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/affairs112.jpg" alt="Student Affairs 112 Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/jumeng1.JPG" alt="Jumeng Photo 1" draggable="false">
+                                <img src="images/aphoto/jumeng2.JPG" alt="Jumeng Photo 2" draggable="false">
+                                <img src="images/aphoto/jumeng3.JPG" alt="Jumeng Photo 3" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">112 "Walking Together in Dreams" Freshman
+                                Welcome</span><span class="lang-zh">112學年度「聚夢同行」迎新系列活動</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Venue Affairs</span><span
+                                class="lang-zh">場務</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Managed venue logistics and general
+                                affairs for the orientation event series</span><span
+                                class="lang-zh">負責迎新系列會場務及總務工作。</span></p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/coordinator.jpg" alt="Coordinator Award" draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/dong1.JPG" alt="Dong Photo 1" draggable="false">
+                                <img src="images/aphoto/dong2.jpg" alt="Dong Photo 2" draggable="false">
+                                <img src="images/aphoto/dong3.jpeg" alt="Dong Photo 3" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">"Winter Warmth · Heart Gathering"
+                                Event</span><span class="lang-zh">「冬暖·心聚」神秘活動</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Vice Event General Coordinator</span><span
+                                class="lang-zh">副總召集人</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Served as Vice General Coordinator,
+                                overseeing the preparation and execution of a mystery event, managing event scheduling
+                                and staffing, and supporting the General Coordinator.
+                                Party.</span><span class="lang-zh">擔任活動副總召集人，統籌神秘活動的籌備與執行工作，規劃流程與人員的安排，并為總召提供支援。</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-flip-wrap" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="images/coa/photography.jpg" alt="Photography Department Award"
+                                    draggable="false">
+                            </div>
+                            <div class="back">
+                                <img src="images/aphoto/ph1.jpg" alt="Photography Photo 1" draggable="false">
+                                <img src="images/aphoto/ph2.JPG" alt="Photography Photo 2" draggable="false">
+                                <img src="images/aphoto/ph3.jpg" alt="Photography Photo 3" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="marquee-caption">
+                        <p class="marquee-caption-title"><span class="lang-en">28th Overseas Chinese Students
+                                Association Graduation Farewell "Departure · Soaring"</span><span
+                                class="lang-zh">第二十八屆僑生聯誼會畢業歡送會「啟程·翱翔」</span></p>
+                        <p class="marquee-caption-role"><span class="lang-en">Information & Photography
+                                Dept.</span><span class="lang-zh">資訊組</span></p>
+                        <p class="marquee-caption-desc"><span class="lang-en">Managed multimedia and photography for the
+                                Graduation Farewell Party, including on-site event photography, filming and editing
+                                faculty blessing videos, and executing lighting design and control</span>
+                            <span class="lang-zh">負責畢業歡送會資訊與攝影相關工作，例如現場拍攝照片、師長祝福影片拍攝與剪輯、燈光設計控制。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Performance Section -->
+    <section class="section-gap" id="academic">
+        <div class="layout-container">
+            <h2 class="section-title" data-reveal>
+                <span class="reveal-item"><span class="lang-en">Grades & Certificates</span><span
+                        class="lang-zh">成績與證書</span></span>
+            </h2>
+            
+            <div class="academic-category">
+                <h3 class="category-title toggle-title" data-target="masonry-gallery-fyscores">
+                    <div>
+                        <span class="lang-en">High School Academic Records</span>
+                        <span class="lang-zh">高中學歷成績</span>
+                    </div>
+                    <span class="toggle-icon">+</span>
+                </h3>
+                <div class="masonry-wrapper" id="masonry-gallery-fyscores">
+                    <div class="masonry-inner">
+                        <div class="masonry-grid">
+                            <!-- fyscores -->
+                            <div class="masonry-item"><img src="images/fyscores/2018scores.jpg" alt="2018 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/fyscores/2019scores.jpg" alt="2019 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/fyscores/2020scores.jpg" alt="2020 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/fyscores/uesscores.jpg" alt="UES Scores" class="gallery-img" draggable="false"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="academic-category" style="margin-top: 4rem;">
+                <h3 class="category-title toggle-title" data-target="masonry-gallery-ncnuscores">
+                    <div>
+                        <span class="lang-en">University Academic Records</span>
+                        <span class="lang-zh">大學學歷成績</span>
+                    </div>
+                    <span class="toggle-icon">+</span>
+                </h3>
+                <div class="masonry-wrapper" id="masonry-gallery-ncnuscores">
+                    <div class="masonry-inner">
+                        <div class="masonry-grid">
+                            <!-- ncnuscores -->
+                            <div class="masonry-item"><img src="images/ncnuscores/1111scores.png" alt="111-1 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/ncnuscores/1112scores.png" alt="111-2 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/ncnuscores/1121scores.png" alt="112-1 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/ncnuscores/1122scores.png" alt="112-2 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/ncnuscores/1131scores.png" alt="113-1 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/ncnuscores/1132scores.png" alt="113-2 Scores" class="gallery-img" draggable="false"></div>
+                            <div class="masonry-item"><img src="images/ncnuscores/1141scores.png" alt="114-1 Scores" class="gallery-img" draggable="false"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborate / Contact Section -->
+    <hr class="section-divider">
+    <section class="section-gap" id="contact">
+        <div class="contact-section layout-container">
+            <h2 class="contact-title" data-reveal>
+                <span class="reveal-item"><span class="lang-en">Let's Connect</span><span
+                        class="lang-zh">與我聯絡</span></span>
+            </h2>
+
+            <div class="contact-grid">
+                <div class="contact-col">
+                    <p class="section-label"><span class="lang-en">// Location</span><span class="lang-zh">// 所在地</span>
+                    </p>
+                    <p class="contact-value-big"><span class="lang-en">TAIWAN</span><span class="lang-zh">台灣</span></p>
+                    <p class="contact-value"><span class="lang-en">FROM MALAYSIA</span><span
+                            class="lang-zh">來自馬來西亞</span></p>
+                </div>
+                <div class="contact-col">
+                    <p class="section-label"><span class="lang-en">// Education</span><span class="lang-zh">// 學歷</span>
+                    </p>
+                    <p class="contact-value">NATIONAL CHI NAN UNIVERSITY</p>
+                    <p class="contact-value">國立暨南國際大學</p>
+                </div>
+                <div class="contact-col">
+                    <p class="section-label"><span class="lang-en">// Get in Touch</span><span class="lang-zh">//
+                            聯絡方式</span></p>
+                    <div class="social-links-grid">
+                        <a href="mailto:gohjunsiong0526@gmail.com" class="social-link">Email</a>
+                        <a href="https://github.com/gohgoh020526011707-create" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://instagram.com/juns0526" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://line.me/ti/p/~ab152408" class="social-link" target="_blank" rel="noopener noreferrer">LINE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-big-name" aria-hidden="true">
+                <span data-reveal>GOH JUN SIONG</span>
+            </div>
+        </div>
+    </section>
+
+    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="main-footer">
+        <div class="layout-container footer-inner">
+            <a href="#hero" class="footer-logo" aria-label="Back to top">Goh Jun Siong</a>
+            <a href="mailto:gohjunsiong0526@gmail.com" class="footer-email"><span class="lang-en">Email Me</span><span
+                    class="lang-zh">寄信給我</span></a>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-nav prev" aria-label="Previous">&lsaquo;</button>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Enlarged view">
+        <button class="lightbox-nav next" aria-label="Next">&rsaquo;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
