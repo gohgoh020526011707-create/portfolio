@@ -363,6 +363,7 @@ button {
     align-items: center;
     justify-content: center;
     border: 1.5px solid var(--terciary);
+    background-color: var(--primary);
     font-weight: 900;
     font-size: 1.1rem;
     transition: background-color 0.3s, color 0.3s;
@@ -388,8 +389,7 @@ button {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background-color: var(--primary);
     border: 1px solid var(--terciary);
     padding: 0.5rem 1rem;
     z-index: 10;
@@ -434,8 +434,7 @@ button {
 
 /* Right capsule */
 .nav-right-capsule {
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background-color: var(--primary);
     border: 1px solid var(--terciary);
     padding: 0.5rem 1rem;
     display: flex;
