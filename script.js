@@ -25,10 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterNumber = document.getElementById('counter-number');
     const header = document.getElementById('header');
     let progress = 0;
+    let isLoaded = false;
+
+    // Listen for full page load including images
+    window.addEventListener('load', () => {
+        isLoaded = true;
+    });
 
     function animateCounter() {
         const interval = setInterval(() => {
-            progress += Math.random() * 3 + 1;
+            // Slow down the increment so it naturally takes a bit longer
+            let increment = Math.random() * 1.5 + 0.5;
+            
+            // If the page hasn't fully loaded, stall the counter at 99
+            if (progress + increment >= 99 && !isLoaded) {
+                progress = 99;
+            } else {
+                progress += increment;
+            }
+
             if (progress >= 100) {
                 progress = 100;
                 counterNumber.textContent = '100';
@@ -45,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 counterNumber.textContent = String(Math.floor(progress)).padStart(2, '0');
             }
-        }, 40);
+        }, 50); // Slightly slower interval
     }
 
     animateCounter();
