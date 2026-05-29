@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroSubtitle = document.getElementById('hero-subtitle');
         const heroScroll = document.getElementById('hero-scroll');
         const floatingWords = document.querySelectorAll('.float-word');
-        const floatingPhotos = document.querySelectorAll('.float-photo');
 
         // Position floating words randomly in the upper-middle area
         floatingWords.forEach((word, i) => {
@@ -211,12 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Active Navigation ---- //
     const sections = document.querySelectorAll('section[id], .hero');
     const navLinks = document.querySelectorAll('.nav-link');
+    let sectionMap = {};
 
-    function updateActiveNav() {
-        const scrollPos = window.scrollY + window.innerHeight / 3;
-
-        // Map section IDs to nav link hrefs
-        const sectionMap = {};
+    function calculateSectionMap() {
+        sectionMap = {};
         sections.forEach((section) => {
             const id = section.id;
             if (id) {
@@ -226,6 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             }
         });
+    }
+
+    calculateSectionMap();
+    window.addEventListener('resize', calculateSectionMap, { passive: true });
+
+    function updateActiveNav() {
+        const scrollPos = window.scrollY + window.innerHeight / 3;
 
         navLinks.forEach((link) => {
             const href = link.getAttribute('href').replace('#', '');
@@ -323,20 +327,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---- Parallax on floating words (subtle) ---- //
+    // ---- Parallax on hero section ---- //
+    const heroSection = document.querySelector('.hero');
+    const heroCenter = document.querySelector('.hero-center');
+    const heroScrollHint = document.getElementById('hero-scroll');
+    
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
-        const hero = document.querySelector('.hero');
-        if (hero && scrollY < window.innerHeight) {
+        if (heroSection && scrollY < window.innerHeight) {
             const progress = scrollY / window.innerHeight;
-            const heroCenter = document.querySelector('.hero-center');
             if (heroCenter) {
                 heroCenter.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.3}px))`;
                 heroCenter.style.opacity = 1 - progress * 1.5;
             }
-            const scrollHint = document.getElementById('hero-scroll');
-            if (scrollHint) {
-                scrollHint.style.opacity = Math.max(0, 0.4 - progress * 2);
+            if (heroScrollHint) {
+                heroScrollHint.style.opacity = Math.max(0, 0.4 - progress * 2);
             }
         }
     }, { passive: true });
