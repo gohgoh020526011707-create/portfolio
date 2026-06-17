@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     hctx.beginPath();
                     hctx.arc(x, y, size, 0, Math.PI * 2);
-                    hctx.fillStyle = `rgba(83, 83, 82, ${alpha})`;
+                    hctx.fillStyle = `rgba(77, 168, 218, ${alpha})`;
                     hctx.fill();
                 }
             }

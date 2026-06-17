@@ -5,12 +5,12 @@
 
 /* ---- CSS Custom Properties ---- */
 :root {
-    --primary: #dcd8c0;
-    --secondary: #bab5a1;
-    --terciary: #535352;
-    --surface: #cfc9b3;
-    --primary-rgb: 220, 216, 192;
-    --terciary-rgb: 83, 83, 82;
+    --primary: #ffffff;
+    --secondary: #A8D8EA;
+    --terciary: #4DA8DA;
+    --surface: #E8F4FD;
+    --primary-rgb: 255, 255, 255;
+    --terciary-rgb: 77, 168, 218;
 
     --font-sans: 'Inter', 'General Sans', system-ui, sans-serif;
     --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -1056,7 +1056,7 @@ body.lang-en .lang-zh {
     text-transform: uppercase;
     opacity: 0.85;
     margin-bottom: 0.35rem;
-    color: #dcd8c0;
+    color: var(--primary);
 }
 
 .marquee-caption-desc {
@@ -1746,10 +1746,21 @@ body.lang-en .lang-zh {
     letter-spacing: 0.05em;
     color: var(--terciary);
     transition: color 0.3s;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     width: fit-content;
     position: relative;
     padding-bottom: 2px;
+}
+
+.social-link svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover svg {
+    transform: scale(1.15);
 }
 
 .social-link::after {
@@ -1932,7 +1943,7 @@ body.lang-en .lang-zh {
     margin-bottom: 1.5rem;
     overflow: hidden;
     border-radius: 8px;
-    border: 2px solid #D4AF37; /* Gold border */
+    border: 2px solid var(--terciary);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     cursor: zoom-in;
