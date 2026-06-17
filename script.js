@@ -359,15 +359,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---- Lightbox Gallery ---- //
+    // ---- Lazy Loading System ---- //
+    // Observe sections and load data-src images when they come into view
+    function lazyLoadSection(section) {
+        const lazyImages = section.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            img.addEventListener('load', () => {
+                img.classList.add('lazy-loaded');
+            }, { once: true });
+        });
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                lazyLoadSection(entry.target);
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '300px 0px' }); // Pre-load 300px before section enters viewport
+
+    // Observe the awards and academic sections
+    const lazySections = document.querySelectorAll('#awards, #academic');
+    lazySections.forEach(section => sectionObserver.observe(section));
+
+    // ---- Marquee Duplication (for seamless loop) ---- //
+    const marqueeTrack = document.getElementById('marquee-track');
+    if (marqueeTrack) {
+        const originalItems = marqueeTrack.querySelectorAll('.marquee-item');
+        originalItems.forEach(item => {
+            const clone = item.cloneNode(true);
+            marqueeTrack.appendChild(clone);
+        });
+    }
+
+    // ---- Lightbox ---- //
     const masonryItems = document.querySelectorAll('.masonry-item');
-    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxModal = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.querySelector('.lightbox-close');
-    const lightboxNext = document.querySelector('.lightbox-nav.next');
-    const lightboxPrev = document.querySelector('.lightbox-nav.prev');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxPrev = document.getElementById('lightbox-prev');
     let currentImageIndex = 0;
-    const galleryImages = Array.from(document.querySelectorAll('.gallery-img')).map(img => img.src);
+
+    // Use data-src as fallback for images not yet loaded
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-img')).map(img => img.src || img.dataset.src);
 
     if (masonryItems.length > 0 && lightboxModal) {
         masonryItems.forEach((item, index) => {
@@ -397,9 +435,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openLightbox() {
-        lightboxImg.src = galleryImages[currentImageIndex];
+        const img = document.querySelectorAll('.gallery-img')[currentImageIndex];
+        const imgSrc = img.src || img.dataset.src;
+        lightboxImg.src = imgSrc;
         lightboxModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
@@ -409,12 +449,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNextImage() {
         currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentImageIndex];
+        const img = document.querySelectorAll('.gallery-img')[currentImageIndex];
+        lightboxImg.src = img.src || img.dataset.src;
     }
 
     function showPrevImage() {
         currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentImageIndex];
+        const img = document.querySelectorAll('.gallery-img')[currentImageIndex];
+        lightboxImg.src = img.src || img.dataset.src;
     }
 
 });

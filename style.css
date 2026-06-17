@@ -1980,7 +1980,16 @@ body.lang-en .lang-zh {
     width: 100%;
     height: auto;
     object-fit: cover;
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, opacity 0.4s ease;
+}
+
+/* Lazy loading fade-in */
+img[data-src] {
+    opacity: 0;
+}
+
+img.lazy-loaded {
+    opacity: 1;
 }
 
 .masonry-item:hover .gallery-img {
