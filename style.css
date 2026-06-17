@@ -1660,6 +1660,26 @@ body.lang-en .lang-zh {
 /* ============================================
    CONTACT SECTION
    ============================================ */
+/* Contact Labels */
+.contact-label {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--terciary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--terciary);
+    width: fit-content;
+}
+
+@media (min-width: 768px) {
+    .contact-label {
+        font-size: 1.5rem;
+    }
+}
+
 .contact-section {
     padding-top: 4rem;
     padding-bottom: 4rem;
